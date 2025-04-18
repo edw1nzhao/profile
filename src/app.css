@@ -1,0 +1,58 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+	name: 'edwin-dark';
+	default: true;
+	prefersdark: true;
+	color-scheme: dark;
+
+	/* Base colors using OKLCH equivalents of your hex values */
+	--color-base-100: oklch(24% 0.01 0); /* #121212 equivalent */
+	--color-base-200: oklch(29% 0.01 0); /* #1a1a1a equivalent */
+	--color-base-300: oklch(34% 0.01 0); /* #232323 equivalent */
+	--color-base-content: oklch(100% 0 0); /* #ffffff equivalent */
+
+	/* Tile/card colors */
+	--color-neutral: oklch(40% 0.01 0); /* #313131 equivalent */
+	--color-neutral-content: oklch(100% 0 0); /* #ffffff equivalent */
+
+	/* Primary colors - cool blue that works with dark theme */
+	--color-primary: oklch(60% 0.19 264); /* #4A78DD equivalent */
+	--color-primary-content: oklch(100% 0 0); /* #ffffff equivalent */
+
+	/* Secondary colors - subtle cooler blue */
+	--color-secondary: oklch(55% 0.17 264); /* #3D6BC9 equivalent */
+	--color-secondary-content: oklch(100% 0 0); /* #ffffff equivalent */
+
+	/* Accent colors - subtle teal */
+	--color-accent: oklch(75% 0.15 195); /* #49C9BA equivalent */
+	--color-accent-content: oklch(24% 0.01 0); /* #121212 equivalent */
+
+	/* Status colors */
+	--color-info: oklch(65% 0.17 250); /* #4A90E2 equivalent */
+	--color-info-content: oklch(100% 0 0); /* #ffffff equivalent */
+	--color-success: oklch(80% 0.2 160); /* #4CD964 equivalent */
+	--color-success-content: oklch(24% 0.01 0); /* #121212 equivalent */
+	--color-warning: oklch(85% 0.2 90); /* #FFCC00 equivalent */
+	--color-warning-content: oklch(24% 0.01 0); /* #121212 equivalent */
+	--color-error: oklch(65% 0.26 30); /* #FF3B30 equivalent */
+	--color-error-content: oklch(100% 0 0); /* #ffffff equivalent */
+
+	/* Keep your existing border radius values */
+	--radius-selector: 1rem;
+	--radius-field: 0.25rem;
+	--radius-box: 0.5rem;
+
+	/* Keep your existing size values */
+	--size-selector: 0.25rem;
+	--size-field: 0.25rem;
+
+	/* Border size */
+	--border: 1px;
+
+	/* Effects */
+	--depth: 1.5;
+	--noise: 0;
+}
