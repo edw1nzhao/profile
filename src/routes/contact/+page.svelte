@@ -92,7 +92,7 @@
 					<div class="bg-success text-success-content rounded-lg p-6 text-center">
 						<h3 class="mb-2 text-xl font-medium">Thank you for your message!</h3>
 						<p>I'll get back to you as soon as possible.</p>
-						<button on:click={() => (form = undefined)} class="btn btn-primary mt-4"
+						<button on:click={() => (form = null)} class="btn btn-primary mt-4"
 							>Send Another Message</button
 						>
 					</div>
@@ -109,6 +109,12 @@
 						}}
 						class="space-y-6"
 					>
+						<!-- Honeypot field to catch bots -->
+						<div class="hidden" aria-hidden="true">
+							<label for="website">Website (Leave this empty)</label>
+							<input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+						</div>
+
 						<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
 							<div>
 								<label for="name" class="mb-2 block text-sm font-medium">Your Name</label>

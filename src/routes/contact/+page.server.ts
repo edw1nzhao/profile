@@ -11,6 +11,16 @@ export const actions = {
 		const email = formData.get('email');
 		const subject = formData.get('subject');
 		const message = formData.get('message');
+		const honeypot = formData.get('website');
+
+		// Check honeypot field - if it's filled, it's likely a bot
+		if (honeypot) {
+			// Return success to the bot without sending an email
+			// This prevents the bot from knowing it was detected
+			return {
+				success: true
+			};
+		}
 
 		if (!name || !email || !subject || !message) {
 			return fail(400, {
