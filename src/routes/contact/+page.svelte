@@ -50,8 +50,9 @@
 	<div class="mb-12 text-center">
 		<h1 class="mb-4 text-4xl font-bold">Get In Touch</h1>
 		<p class="mx-auto max-w-2xl text-xl opacity-80">
-			Have a question or want to discuss a project? I'd love to hear from you. Fill out the form below
-			or use one of the contact methods.
+			Have a question or want to discuss a project? I'd love to hear from you. I'm particularly interested in
+			connecting with fellow tech enthusiasts and entrepreneurs for collaboration on innovative projects,
+			especially those involving open source. Fill out the form below or use one of the contact methods.
 		</p>
 	</div>
 
@@ -67,17 +68,7 @@
 					</div>
 					<div>
 						<h3 class="text-lg font-medium">Email</h3>
-						<p class="opacity-80">edwin@example.com</p>
-					</div>
-				</div>
-
-				<div class="mb-6 flex items-start gap-4">
-					<div class="rounded-full bg-primary p-3 text-primary-content">
-						<IconPhone class="h-6 w-6" />
-					</div>
-					<div>
-						<h3 class="text-lg font-medium">Phone</h3>
-						<p class="opacity-80">(123) 456-7890</p>
+						<p class="opacity-80">contact@edwinzhao.com</p>
 					</div>
 				</div>
 
@@ -87,35 +78,19 @@
 					</div>
 					<div>
 						<h3 class="text-lg font-medium">Location</h3>
-						<p class="opacity-80">San Francisco, CA</p>
+						<p class="opacity-80">USA</p>
 					</div>
 				</div>
 
 				<h3 class="mb-4 text-lg font-medium">Connect with me</h3>
 				<div class="flex gap-4">
 					<a
-						href="https://linkedin.com"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="rounded-full bg-base-300 p-3 transition-colors hover:bg-primary"
-					>
-						<IconLinkedin class="h-6 w-6" />
-					</a>
-					<a
-						href="https://github.com"
+						href="https://github.com/edw1nzhao"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="rounded-full bg-base-300 p-3 transition-colors hover:bg-primary"
 					>
 						<IconGithub class="h-6 w-6" />
-					</a>
-					<a
-						href="https://twitter.com"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="rounded-full bg-base-300 p-3 transition-colors hover:bg-primary"
-					>
-						<IconTwitter class="h-6 w-6" />
 					</a>
 				</div>
 			</div>
@@ -239,6 +214,15 @@
 				<p class="opacity-80">
 					My availability varies throughout the year. Please reach out with details about your project,
 					and I'll let you know my current availability and how I might be able to help.
+				</p>
+			</div>
+
+			<div class="rounded-xl bg-base-200 p-6">
+				<h3 class="mb-3 text-xl font-medium">Are you open to collaboration?</h3>
+				<p class="opacity-80">
+					Absolutely! I'm always excited to collaborate on interesting tech projects or entrepreneurial ventures.
+					Whether you're looking to build something new, contribute to open source, or just exchange ideas,
+					I welcome connections with like-minded individuals passionate about technology and innovation.
 				</p>
 			</div>
 		</div>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <!-- Black background -->
+  <rect width="100" height="100" fill="black" />
+  
+  <!-- EZ text in white with thin font -->
+  <text x="50" y="65" font-family="Arial, sans-serif" font-weight="200" font-size="45" fill="white" text-anchor="middle">EZ</text>
+</svg>

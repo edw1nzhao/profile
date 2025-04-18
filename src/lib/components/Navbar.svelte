@@ -69,6 +69,6 @@
 		</ul>
 	</div>
 	<div class="navbar-end">
-		<a href="/contact" class="btn btn-primary">Let's Talk</a>
+		<a href="/contact" class="btn btn-primary">Let's Talk!</a>
 	</div>
 </div>
