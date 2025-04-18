@@ -11,10 +11,6 @@
 	import IconContact from 'virtual:icons/mdi/email-outline';
 
 	onMount(() => {
-		// Create a timeline for the page load animations
-		const pageLoadTimeline = new Timeline();
-
-		// Animate the heading - make it pop out immediately
 		animate('.heading', {
 			opacity: [0, 1],
 			translateY: [20, 0],
@@ -22,7 +18,6 @@
 			easing: 'easeOutExpo'
 		});
 
-		// Animate the paragraphs - start right after the heading
 		animate('.content-paragraph', {
 			opacity: [0, 1],
 			translateY: [20, 0],
@@ -31,7 +26,6 @@
 			easing: 'easeOutExpo'
 		});
 
-		// Animate the divider - start after paragraphs
 		animate('.divider', {
 			scaleX: [0, 1],
 			opacity: [0, 1],
@@ -40,7 +34,6 @@
 			easing: 'easeInOutQuad'
 		});
 
-		// Animate the navigation tiles - start after divider
 		animate('.nav-tile', {
 			scale: [0.8, 1],
 			opacity: [0, 1],
@@ -49,7 +42,6 @@
 			easing: 'easeOutElastic(1, .5)'
 		});
 
-		// Add hover animation for nav tiles
 		document.querySelectorAll('.nav-tile').forEach((tile) => {
 			tile.addEventListener('mouseenter', () => {
 				animate(tile, {
@@ -67,57 +59,67 @@
 				});
 			});
 		});
+
+		document.querySelectorAll('.animated-link').forEach((link) => {
+			link.addEventListener('mouseenter', () => {
+				animate(link, {
+					translateX: [0, -1, 1, 0],
+					duration: 300,
+					easing: 'easeInOutSine'
+				});
+			});
+		});
 	});
 </script>
 
 <div class="text-base-content flex min-h-screen flex-col items-center justify-center">
-	<div class="mx-auto flex w-[90%] md:w-[60%] flex-col">
-		<h1 class="heading pb-4 md:pb-8 text-5xl md:text-7xl font-light">Hi!</h1>
+	<div class="mx-auto flex w-[40%] flex-col md:w-[30%]">
+		<h1 class="heading pb-4 text-5xl font-light md:pb-8 md:text-7xl">Hi!</h1>
 		<p class="content-paragraph py-2">
-			I'm <a href="/contact" class="text-primary hover:underline">Edwin Zhao</a>, and I'm passionate
-			about building infrastructure that empowers developers to do their best work.
+			I'm <a href="/contact" class="animated-link bg-white p-1 text-black">Edwin Zhao</a>, and I'm
+			passionate about building infrastructure that empowers developers to do their best work.
 		</p>
 		<p class="content-paragraph py-2">
 			I've dedicated my career to creating better ways of working—reducing months-long deployment
 			cycles to days and helping organizations embrace <a
 				href="/coding"
-				class="text-primary hover:underline">modern cloud practices</a
+				class="animated-link bg-white p-1 text-black">modern cloud practices</a
 			>.
 		</p>
 		<p class="content-paragraph py-2">
 			Want to chat about developer experience, automation workflows, or modern cloud architecture? <a
 				href="/contact"
-				class="text-primary hover:underline">Let's talk</a
+				class="animated-link bg-white p-1 text-black">Let's talk</a
 			>
 		</p>
 
-		<div class="divider bg-neutral my-8 md:my-12 h-px w-full"></div>
+		<div class="divider bg-neutral my-8 h-px w-full md:my-12"></div>
 
-		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
 			<a
 				href="/about"
-				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-4 md:p-6 text-center shadow-lg"
+				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-4 text-center shadow-lg md:p-6"
 			>
 				<IconPerson class="mb-2 h-8 w-8 md:h-10 md:w-10" />
 				<span>about</span>
 			</a>
 			<a
 				href="/coding"
-				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-4 md:p-6 text-center shadow-lg"
+				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-4 text-center shadow-lg md:p-6"
 			>
 				<IconCode class="mb-2 h-8 w-8 md:h-10 md:w-10" />
 				<span>coding</span>
 			</a>
 			<a
 				href="/resume"
-				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-4 md:p-6 text-center shadow-lg"
+				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-4 text-center shadow-lg md:p-6"
 			>
 				<IconResume class="mb-2 h-8 w-8 md:h-10 md:w-10" />
 				<span>resume</span>
 			</a>
 			<a
 				href="/contact"
-				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-4 md:p-6 text-center shadow-lg"
+				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-4 text-center shadow-lg md:p-6"
 			>
 				<IconContact class="mb-2 h-8 w-8 md:h-10 md:w-10" />
 				<span>contact</span>
@@ -125,3 +127,9 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.animated-link {
+		display: inline-block;
+	}
+</style>
