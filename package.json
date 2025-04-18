@@ -41,6 +41,7 @@
 	"dependencies": {
 		"@inlang/paraglide-js": "^2.0.0",
 		"animejs": "^4.0.1",
-		"daisyui": "^5.0.25"
+		"daisyui": "^5.0.25",
+		"resend": "^4.3.0"
 	}
 }

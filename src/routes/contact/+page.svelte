@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { animate, stagger } from 'animejs';
+	import { enhance } from '$app/forms';
 	// @ts-ignore
 	import IconEmail from 'virtual:icons/mdi/email';
 	// @ts-ignore
@@ -14,8 +15,9 @@
 	// @ts-ignore
 	import IconTwitter from 'virtual:icons/mdi/twitter';
 
+	export let form;
+
 	onMount(() => {
-		// Animate contact sections
 		animate('.contact-section', {
 			opacity: [0, 1],
 			translateY: [20, 0],
@@ -25,25 +27,11 @@
 		});
 	});
 
-	// Form handling
 	let name = '';
 	let email = '';
 	let subject = '';
 	let message = '';
 	let submitting = false;
-	let submitted = false;
-	let error = '';
-
-	function handleSubmit() {
-		submitting = true;
-		error = '';
-
-		// Simulate form submission
-		setTimeout(() => {
-			submitting = false;
-			submitted = true;
-		}, 1500);
-	}
 </script>
 
 <div class="container mx-auto px-4 py-12">
@@ -58,7 +46,6 @@
 	</div>
 
 	<div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
-		<!-- Contact Information -->
 		<div class="contact-section lg:col-span-1">
 			<div class="bg-base-200 rounded-xl p-8">
 				<h2 class="mb-6 text-2xl font-semibold">Contact Information</h2>
@@ -97,28 +84,39 @@
 			</div>
 		</div>
 
-		<!-- Contact Form -->
 		<div class="contact-section lg:col-span-2">
 			<div class="bg-base-200 rounded-xl p-8">
 				<h2 class="mb-6 text-2xl font-semibold">Send Me a Message</h2>
 
-				{#if submitted}
+				{#if form?.success}
 					<div class="bg-success text-success-content rounded-lg p-6 text-center">
 						<h3 class="mb-2 text-xl font-medium">Thank you for your message!</h3>
 						<p>I'll get back to you as soon as possible.</p>
-						<button on:click={() => (submitted = false)} class="btn btn-primary mt-4"
+						<button on:click={() => (form = undefined)} class="btn btn-primary mt-4"
 							>Send Another Message</button
 						>
 					</div>
 				{:else}
-					<form on:submit|preventDefault={handleSubmit} class="space-y-6">
+					<form
+						method="POST"
+						use:enhance={() => {
+							submitting = true;
+
+							return ({ update }) => {
+								submitting = false;
+								update();
+							};
+						}}
+						class="space-y-6"
+					>
 						<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
 							<div>
 								<label for="name" class="mb-2 block text-sm font-medium">Your Name</label>
 								<input
 									type="text"
 									id="name"
-									bind:value={name}
+									name="name"
+									value={form?.name || name}
 									required
 									class="border-base-300 bg-base-300 text-base-content w-full rounded-lg border px-4 py-2"
 								/>
@@ -128,7 +126,8 @@
 								<input
 									type="email"
 									id="email"
-									bind:value={email}
+									name="email"
+									value={form?.email || email}
 									required
 									class="border-base-300 bg-base-300 text-base-content w-full rounded-lg border px-4 py-2"
 								/>
@@ -140,7 +139,8 @@
 							<input
 								type="text"
 								id="subject"
-								bind:value={subject}
+								name="subject"
+								value={form?.subject || subject}
 								required
 								class="border-base-300 bg-base-300 text-base-content w-full rounded-lg border px-4 py-2"
 							/>
@@ -150,15 +150,16 @@
 							<label for="message" class="mb-2 block text-sm font-medium">Message</label>
 							<textarea
 								id="message"
-								bind:value={message}
+								name="message"
 								rows="6"
 								required
 								class="border-base-300 bg-base-300 text-base-content w-full rounded-lg border px-4 py-2"
-							></textarea>
+								>{form?.message || message}</textarea
+							>
 						</div>
 
-						{#if error}
-							<div class="bg-error text-error-content rounded-lg p-3 text-sm">{error}</div>
+						{#if form?.error}
+							<div class="bg-error text-error-content rounded-lg p-3 text-sm">{form.error}</div>
 						{/if}
 
 						<button
