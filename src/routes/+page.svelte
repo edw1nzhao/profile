@@ -71,8 +71,8 @@
 </script>
 
 <div class="text-base-content flex min-h-screen flex-col items-center justify-center">
-	<div class="mx-auto flex w-[60%] flex-col">
-		<h1 class="heading pb-8 text-7xl font-light">Hi!</h1>
+	<div class="mx-auto flex w-[90%] md:w-[60%] flex-col">
+		<h1 class="heading pb-4 md:pb-8 text-5xl md:text-7xl font-light">Hi!</h1>
 		<p class="content-paragraph py-2">
 			I'm <a href="/contact" class="text-primary hover:underline">Edwin Zhao</a>, and I'm passionate
 			about building infrastructure that empowers developers to do their best work.
@@ -91,35 +91,35 @@
 			>
 		</p>
 
-		<div class="divider bg-neutral my-12 h-px w-full"></div>
+		<div class="divider bg-neutral my-8 md:my-12 h-px w-full"></div>
 
-		<div class="grid grid-cols-4 gap-4">
+		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
 			<a
 				href="/about"
-				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-6 text-center shadow-lg"
+				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-4 md:p-6 text-center shadow-lg"
 			>
-				<IconPerson class="mb-2 h-10 w-10" />
+				<IconPerson class="mb-2 h-8 w-8 md:h-10 md:w-10" />
 				<span>about</span>
 			</a>
 			<a
 				href="/coding"
-				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-6 text-center shadow-lg"
+				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-4 md:p-6 text-center shadow-lg"
 			>
-				<IconCode class="mb-2 h-10 w-10" />
+				<IconCode class="mb-2 h-8 w-8 md:h-10 md:w-10" />
 				<span>coding</span>
 			</a>
 			<a
 				href="/resume"
-				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-6 text-center shadow-lg"
+				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-4 md:p-6 text-center shadow-lg"
 			>
-				<IconResume class="mb-2 h-10 w-10" />
+				<IconResume class="mb-2 h-8 w-8 md:h-10 md:w-10" />
 				<span>resume</span>
 			</a>
 			<a
 				href="/contact"
-				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-6 text-center shadow-lg"
+				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-4 md:p-6 text-center shadow-lg"
 			>
-				<IconContact class="mb-2 h-10 w-10" />
+				<IconContact class="mb-2 h-8 w-8 md:h-10 md:w-10" />
 				<span>contact</span>
 			</a>
 		</div>
