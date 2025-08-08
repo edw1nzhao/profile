@@ -29,7 +29,5 @@
 
 <div
   bind:this={cursorRef}
-  class="pointer-events-none fixed z-50 h-10 w-10 rounded-full bg-primary/20 blur-xl transition-all duration-300 mix-blend-screen"
-  class:scale-150={isPointer}
-  class:bg-primary/30={isPointer}
+  class="pointer-events-none fixed z-50 h-10 w-10 rounded-full blur-xl transition-all duration-300 mix-blend-screen {isPointer ? 'scale-150 bg-primary/30' : 'bg-primary/20'}"
 />
