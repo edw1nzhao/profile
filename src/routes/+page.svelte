@@ -9,6 +9,13 @@
 	import IconResume from 'virtual:icons/mdi/file-document-outline';
 	// @ts-ignore
 	import IconContact from 'virtual:icons/mdi/email-outline';
+	import BackgroundBeams from '$lib/components/ui/background-beams.svelte';
+	import Spotlight from '$lib/components/ui/spotlight.svelte';
+	import Card3D from '$lib/components/ui/card-3d.svelte';
+	import TextGenerateEffect from '$lib/components/ui/text-generate-effect.svelte';
+	import MovingBorder from '$lib/components/ui/moving-border.svelte';
+	import CursorGlow from '$lib/components/ui/cursor-glow.svelte';
+	import MagneticButton from '$lib/components/ui/magnetic-button.svelte';
 
 	onMount(() => {
 		animate('.heading', {
@@ -42,21 +49,13 @@
 			easing: 'easeOutElastic(1, .5)'
 		});
 
-		document.querySelectorAll('.nav-tile').forEach((tile) => {
-			tile.addEventListener('mouseenter', () => {
-				animate(tile, {
-					scale: 1.05,
-					duration: 300,
-					easing: 'easeOutElastic(1, .5)'
-				});
-			});
-
-			tile.addEventListener('mouseleave', () => {
-				animate(tile, {
-					scale: 1,
-					duration: 300,
-					easing: 'easeOutElastic(1, .5)'
-				});
+		// Add floating animation to cards
+		document.querySelectorAll('.nav-tile').forEach((tile, index) => {
+			animate(tile, {
+				translateY: [0, -10, 0],
+				duration: 3000 + (index * 500),
+				easing: 'easeInOutSine',
+				loop: true
 			});
 		});
 
@@ -72,58 +71,68 @@
 	});
 </script>
 
-<div class="text-base-content flex min-h-screen flex-col items-center justify-center">
+<BackgroundBeams className="opacity-30" />
+<Spotlight />
+<CursorGlow />
+
+<div class="text-base-content flex min-h-screen flex-col items-center justify-center relative z-10">
 	<div class="mx-auto flex w-[40%] flex-col md:w-[30%]">
-		<h1 class="heading pb-4 text-5xl font-light md:pb-8 md:text-7xl">Hi!</h1>
+		<TextGenerateEffect words="Hi!" className="heading pb-4 md:pb-8" />
 		<p class="content-paragraph py-2">
-			I'm <a href="/contact" class="animated-link bg-white p-1 text-black">Edwin Zhao</a>, and I'm
+			I'm <MagneticButton href="/contact" className="animated-link bg-white p-1 text-black inline">Edwin Zhao</MagneticButton>, and I'm
 			passionate about building infrastructure that empowers developers to do their best work.
 		</p>
 		<p class="content-paragraph py-2">
 			I've dedicated my career to creating better ways of working—reducing months-long deployment
-			cycles to days and helping organizations embrace <a
+			cycles to days and helping organizations embrace <MagneticButton
 				href="/coding"
-				class="animated-link bg-white p-1 text-black">modern cloud practices</a
-			>.
+				className="animated-link bg-white p-1 text-black inline">modern cloud practices</MagneticButton>.
 		</p>
 		<p class="content-paragraph py-2">
-			Want to chat about developer experience, automation workflows, or modern cloud architecture? <a
+			Want to chat about developer experience, automation workflows, or modern cloud architecture? <MagneticButton
 				href="/contact"
-				class="animated-link bg-white p-1 text-black">Let's talk</a
-			>
+				className="animated-link bg-white p-1 text-black inline">Let's talk</MagneticButton>
 		</p>
 
 		<div class="divider bg-neutral my-8 h-px w-full md:my-12"></div>
 
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
-			<a
-				href="/about"
-				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-4 text-center shadow-lg md:p-6"
-			>
-				<IconPerson class="mb-2 h-8 w-8 md:h-10 md:w-10" />
-				<span>about</span>
-			</a>
-			<a
-				href="/coding"
-				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-4 text-center shadow-lg md:p-6"
-			>
-				<IconCode class="mb-2 h-8 w-8 md:h-10 md:w-10" />
-				<span>coding</span>
-			</a>
-			<a
-				href="/resume"
-				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-4 text-center shadow-lg md:p-6"
-			>
-				<IconResume class="mb-2 h-8 w-8 md:h-10 md:w-10" />
-				<span>resume</span>
-			</a>
-			<a
-				href="/contact"
-				class="nav-tile border-base-300 text-base-content hover:bg-base-200 flex flex-col items-center rounded-lg border p-4 text-center shadow-lg md:p-6"
-			>
-				<IconContact class="mb-2 h-8 w-8 md:h-10 md:w-10" />
-				<span>contact</span>
-			</a>
+			<Card3D containerClassName="nav-tile">
+				<a
+					href="/about"
+					class="text-base-content hover:bg-base-200 flex flex-col items-center p-4 text-center md:p-6 transition-colors"
+				>
+					<IconPerson class="mb-2 h-8 w-8 md:h-10 md:w-10" />
+					<span>about</span>
+				</a>
+			</Card3D>
+			<Card3D containerClassName="nav-tile">
+				<a
+					href="/coding"
+					class="text-base-content hover:bg-base-200 flex flex-col items-center p-4 text-center md:p-6 transition-colors"
+				>
+					<IconCode class="mb-2 h-8 w-8 md:h-10 md:w-10" />
+					<span>coding</span>
+				</a>
+			</Card3D>
+			<Card3D containerClassName="nav-tile">
+				<a
+					href="/resume"
+					class="text-base-content hover:bg-base-200 flex flex-col items-center p-4 text-center md:p-6 transition-colors"
+				>
+					<IconResume class="mb-2 h-8 w-8 md:h-10 md:w-10" />
+					<span>resume</span>
+				</a>
+			</Card3D>
+			<Card3D containerClassName="nav-tile">
+				<a
+					href="/contact"
+					class="text-base-content hover:bg-base-200 flex flex-col items-center p-4 text-center md:p-6 transition-colors"
+				>
+					<IconContact class="mb-2 h-8 w-8 md:h-10 md:w-10" />
+					<span>contact</span>
+				</a>
+			</Card3D>
 		</div>
 	</div>
 </div>

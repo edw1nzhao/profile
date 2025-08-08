@@ -42,7 +42,10 @@
 	"dependencies": {
 		"@inlang/paraglide-js": "^2.0.0",
 		"animejs": "^4.0.1",
+		"clsx": "^2.1.1",
 		"daisyui": "^5.0.25",
-		"resend": "^4.3.0"
+		"framer-motion": "^12.23.12",
+		"resend": "^4.3.0",
+		"tailwind-merge": "^3.3.1"
 	}
 }

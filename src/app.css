@@ -2,6 +2,40 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 @plugin "daisyui";
+
+/* Apple-inspired smooth scrolling */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Better font rendering */
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Interactive hover effects */
+@layer utilities {
+	.hover-lift {
+		@apply transition-transform duration-300 hover:-translate-y-1;
+	}
+	
+	.hover-glow {
+		@apply transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/20;
+	}
+}
+
+/* Smooth animations */
+* {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Cursor glow effect support */
+@supports (mix-blend-mode: screen) {
+	.mix-blend-screen {
+		mix-blend-mode: screen;
+	}
+}
 @plugin "daisyui/theme" {
 	name: 'edwin-dark';
 	default: true;
