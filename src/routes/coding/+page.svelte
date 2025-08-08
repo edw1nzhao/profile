@@ -76,17 +76,27 @@
 		<div class="animate-item mb-8">
 			<h1 class="mb-6 text-4xl font-bold">Cloud Engineering & Developer Experience</h1>
 			<div class="mx-auto mb-8 h-32 w-32">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-full w-full text-primary">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					class="text-primary h-full w-full"
+				>
 					<path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
 				</svg>
 			</div>
-			<div class="animate-item rounded-xl bg-base-200 p-8">
+			<div class="animate-item bg-base-200 rounded-xl p-8">
 				<h2 class="mb-4 text-2xl font-semibold">Blog Coming Soon</h2>
 				<p class="mb-6 text-xl opacity-80">
 					I'm currently working on some exciting technical content to share with you.
 				</p>
 				<p class="opacity-70">
-					Check back soon for articles on cloud architecture, developer experience, and platform engineering.
+					Check back soon for articles on cloud architecture, developer experience, and platform
+					engineering.
 				</p>
 				<div class="mt-8">
 					<a href="/about" class="btn btn-primary">Learn More About Me</a>

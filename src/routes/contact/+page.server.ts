@@ -1,4 +1,4 @@
-import { RESEND_API_KEY } from '$env/static/private';
+import { RESEND_API_KEY, TURNSTILE_SECRET_KEY } from '$env/static/private';
 import { Resend } from 'resend';
 import { fail } from '@sveltejs/kit';
 
@@ -12,6 +12,7 @@ export const actions = {
 		const subject = formData.get('subject');
 		const message = formData.get('message');
 		const honeypot = formData.get('website');
+		const turnstileToken = formData.get('cf-turnstile-response');
 
 		// Check honeypot field - if it's filled, it's likely a bot
 		if (honeypot) {
@@ -25,6 +26,58 @@ export const actions = {
 		if (!name || !email || !subject || !message) {
 			return fail(400, {
 				error: 'All fields are required',
+				name,
+				email,
+				subject,
+				message
+			});
+		}
+
+		// Verify Turnstile token
+		if (!turnstileToken) {
+			return fail(400, {
+				error: 'Please complete the CAPTCHA',
+				name,
+				email,
+				subject,
+				message
+			});
+		}
+
+		try {
+			const verifyResponse = await fetch(
+				'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded'
+					},
+					body: new URLSearchParams({
+						secret: TURNSTILE_SECRET_KEY,
+						response: turnstileToken as string,
+						remoteip:
+							request.headers.get('CF-Connecting-IP') ||
+							request.headers.get('X-Forwarded-For') ||
+							''
+					})
+				}
+			);
+
+			const verifyData = await verifyResponse.json();
+
+			if (!verifyData.success) {
+				return fail(400, {
+					error: 'CAPTCHA verification failed. Please try again.',
+					name,
+					email,
+					subject,
+					message
+				});
+			}
+		} catch (error) {
+			console.error('Turnstile verification error:', error);
+			return fail(500, {
+				error: 'CAPTCHA verification error. Please try again.',
 				name,
 				email,
 				subject,

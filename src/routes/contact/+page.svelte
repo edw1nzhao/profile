@@ -168,6 +168,13 @@
 							<div class="bg-error text-error-content rounded-lg p-3 text-sm">{form.error}</div>
 						{/if}
 
+						<!-- Cloudflare Turnstile widget -->
+						<div
+							class="cf-turnstile"
+							data-sitekey="0x4AAAAAABpfW6BzEPdL1NRn"
+							data-theme="auto"
+						></div>
+
 						<button
 							type="submit"
 							disabled={submitting}
